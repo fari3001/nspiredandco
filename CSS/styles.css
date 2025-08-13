@@ -353,6 +353,7 @@ label.radio-inline {
   display: inline-flex;
   font-weight: 400;
   color: var(--radio-text-color);
+  margin-bottom: 0;
 }
 
 .radio-inline:has(input[type="radio"]:checked) {
