@@ -441,6 +441,11 @@ input[type="number"]:focus-visible {
     padding: 1rem 1.5rem 1rem 1.5rem;
   }
 
+  .intro-card-content {
+    height: 100%;
+    border-radius: 0;
+  }
+
   .header-inner {
     flex-wrap: wrap;
     justify-content: center;
