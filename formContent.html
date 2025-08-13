@@ -1,0 +1,100 @@
+  <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Nspired & Co - Custom Perfume Creations</title>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:700,400|Montserrat:400,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="Css/styles.css">
+    <script src="JS/scripts.js"></script>
+</head>
+
+<body class="linear-background">
+<form action="https://formspree.io/f/xpwlklzd" method="POST" novalidate>
+  <fieldset>
+    <Legend>Please Note</Legend>
+    <label>When you submit this form, it will not automatically collect your details like name and email address unless you provide it yourself.</label>
+  </Fieldset>
+
+  <fieldset>
+    <legend>Your Info</legend>
+
+    <label for="email">
+      <p class="form-header-text">Your Email:</p>
+      <input type="email" id="email" name="email" placeholder="you@example.com" required>
+    </label>
+
+    <p class="form-header-text">Age Range:</p>
+    <div class="radio-group">
+      <label class="radio-inline"><input type="radio" name="age" value="16-18" required>16-18</label>
+      <label class="radio-inline"><input type="radio" name="age" value="18-24">18-24</label>
+      <label class="radio-inline"><input type="radio" name="age" value="25-34">25-34</label>
+      <label class="radio-inline"><input type="radio" name="age" value="35-44">35-44</label>
+      <label class="radio-inline"><input type="radio" name="age" value="45+">>44</label>
+    </div>
+  </fieldset>
+
+  <fieldset>
+    <legend>Registration Details</legend>
+
+    <label for="num_participants">
+      <p class="form-header-text">How many people are you registering for?:</p>
+      <input type="number" id="num_participants" name="num_participants" min="1" max="10" placeholder="e.g. 1" required>
+    </label>
+
+    <label for="full_names">
+      <p class="form-header-text">Please provide full names of all participants:</p>
+      <input type="text" id="full_names" name="full_names" placeholder="Separate names with commas" required>
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Contact Preferences</legend>
+    <p class="form-header-text">What is your preferred method for us to communicate with you?</p>
+    <div class="radio-group">
+      <label class="radio-inline"><input type="radio" name="contact_method" value="Instagram" required>Instagram</label>
+      <label class="radio-inline"><input type="radio" name="contact_method" value="Email">Email</label>
+      <label class="radio-inline"><input type="radio" name="contact_method" value="Text">Text</label>
+      <label class="radio-inline"><input type="radio" name="contact_method" value="WhatsApp">WhatsApp</label>
+    </div>
+
+    <label for="communication_info">
+      <p class="form-header-text">Based on your answer above, provide your contact info:</p>
+      <input type="text" id="communication_info" name="communication_info" placeholder="Email or Phone Number" required>
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <legend>Additional Info</legend>
+
+    <p class="form-header-text">How did you hear about this event?</p>
+    <div class="radio-group">
+      <label class="radio-inline"><input type="radio" name="referral_source" value="Our website" required>Our website</label>
+      <label class="radio-inline"><input type="radio" name="referral_source" value="Family or friend">Family or friend</label>
+      <label class="radio-inline"><input type="radio" name="referral_source" value="Instagram">Instagram</label>
+      <label class="radio-inline"><input type="radio" name="referral_source" value="Other">Other</label>
+    </div>
+
+    <p class="form-header-text">Do you give us permission to tag you in photos taken on the day?</p>
+    <div class="radio-group">
+      <label class="radio-inline"><input type="radio" name="photo_tag_permission" value="Yes" required>Yes</label>
+      <label class="radio-inline"><input type="radio" name="photo_tag_permission" value="No">No</label>
+    </div>
+
+    <label for="instagram_handle">
+      <p class="form-header-text">Instagram handle (if you gave permission to tag):</p>
+      <input type="text" id="instagram_handle" name="instagram_handle" placeholder="@yourhandle">
+    </label>
+  </fieldset>
+
+  <fieldset>
+    <label class="acknowledge-wrapper">
+      <input type="checkbox" id="acknowledge" name="acknowledgment" required>
+      <span class="acknowledge-text">I acknowledge that this is a ladies-only event, and that babies and children under 16 are not permitted. I understand the experience costs $45 per participant, and that Nspired & Co will contact me for payment after registration.</span>
+    </label>
+  </fieldset>
+
+  <button type="submit" id="sendBtn" disabled>Send</button>
+</form>
+</body>
+</html>

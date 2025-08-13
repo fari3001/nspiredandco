@@ -5,6 +5,8 @@
     --standard-border-radius: 1.5rem;
     --primary-color: #b48c6e;
     --content-margin: 0.5rem;
+    --form-box-shadow: 0 0 12px rgba(0,0,0,0.1);
+    --radio-text-color: #353535;
 }
 
 body {
@@ -125,6 +127,7 @@ header {
     align-items: center;
 }
 
+.intro-card-wrapper .intro-button-card-wrapper button,
 .core-offerings-wrapper .card-wrapper button {
     background-color: white;
     color: var(--primary-color);
@@ -134,7 +137,6 @@ header {
     font-size: 1rem;
     font-weight: 600;
     border: none;
-    border-radius: 45px;
     /* box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1); */
     box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.07), 0 0 8px 1.5px rgba(180, 140, 110, 0.15);
     transition: all 0.3s ease 0s;
@@ -142,6 +144,14 @@ header {
     outline: none;
     width: 35%;
     height: 2.5rem;
+}
+
+.intro-card-wrapper .intro-button-card-wrapper button {
+  color: black;
+  margin: 0;
+  width: 95%;
+  height: 4rem;
+  border-radius: 2rem;
 }
 
 .core-offerings-wrapper .card-wrapper button:hover {
@@ -152,6 +162,276 @@ header {
 .search-icon button:hover,
 .search-icon button:focus {
   color: #b48c6e;
+}
+
+.linear-background {
+  background: linear-gradient(120deg, #f6f1e7 0%, #d9cbbf 40%, #b39b72 70%, #8c7048 100%);
+  background: linear-gradient(135deg, #f3e9d2 0%, #d7c4a3 50%, #bfa978 100%);
+}
+
+.intro-card-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #f3e9d2 0%, #d7c4a3 50%, #bfa978 100%);
+}
+
+
+.intro-card-title {
+  color: var(--header-color);
+  font-weight: var(--header-font-weight);
+  font-size: 1.8rem;
+  color: white;
+  margin-bottom: 0.5rem;
+  padding-left: 0.4rem;
+}
+
+.intro-card-description {
+    color: #c5c5c5;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    padding-left: 0.4rem;
+}
+
+.intro-card-content {
+  position: relative; /* so pseudo-element positions relative to it */
+  border: 0.6rem solid white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  height: 80vh;
+  /* width: 600px; */
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+
+  padding: 0; /* we'll move padding into the blur area */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  border-radius: var(--standard-border-radius);
+  background-image: url('../Images/Perfume-Booklet.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  overflow: hidden; /* so blur area doesn't stick out */
+  box-shadow: var(--form-box-shadow);
+}
+
+.intro-card-content::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  z-index: 1;
+
+  /* Add a fade gradient mask */
+  mask-image: linear-gradient(to top, black 40%, transparent 100%);
+  -webkit-mask-image: linear-gradient(to top, black 40%, transparent 100%);
+}
+
+
+/* Content stays above the blur */
+.intro-inner-card-content {
+  position: relative;
+  z-index: 2;
+  padding: 2rem;
+  color: white;
+}
+
+
+/* Button Animations */
+
+.animated-button {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+  transition: color 0.3s ease;
+}
+
+.animated-button:hover {
+  color: #fff;
+  transition-delay: 0.2s;
+  animation: ani500 0.6s forwards;
+  background:
+    radial-gradient(circle, var(--primary-color) 0.2em, transparent 0.3em) 6em 6em / 1em 1em,
+    radial-gradient(circle, var(--primary-color) 0.2em, transparent 0.3em) 0 0 / 1em 1em;
+}
+
+@keyframes ani500 {
+  100% {
+    background-size: 2.375em 2.375em, 0.1em 0.1em;
+  }
+}
+
+/* ====== Acknowledge Styles ====== */
+.acknowledge-text {
+  font-size: 0.9rem;
+  color: var(--paragraph-color);
+  margin-left: 0.5rem;
+}
+
+.acknowledge-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+
+.acknowledge-wrapper input[type="checkbox"] {
+  background-color: var(--primary-color);
+}
+
+
+/* ====== Form Specific Styles ====== */
+
+form {
+  width: 100%;
+  max-width: 600px;
+  box-sizing: border-box;
+  background: #fff;
+  padding: 2rem 2.5rem;
+  margin: 2rem auto;
+  border-radius: var(--standard-border-radius);
+  box-shadow: var(--form-box-shadow);
+  color: var(--header-color);
+}
+
+fieldset {
+  border: 1px solid #ddd;
+  padding: 1.5rem 2rem;
+  margin-bottom: 2rem;
+  border-radius: calc(var(--standard-border-radius) / 1.5);
+}
+
+legend {
+  font-weight: var(--header-font-weight);
+  color: var(--header-color);
+  padding: 0 0.5rem;
+  font-size: 1.2rem;
+}
+
+label {
+  display: flex;
+  flex-direction: column; /* stack text above input */
+  align-items: flex-start;
+  margin-bottom: 1.25rem;
+  cursor: pointer;
+  color: var(--header-color);
+  font-weight: 500;
+}
+
+.form-header-text {
+  font-weight: 500;
+  color: var(--header-color);
+  margin: 0 0 0.5rem 0rem;
+}
+
+/* Text, email, number inputs stacked below label text */
+label > input[type="text"],
+label > input[type="email"],
+label > input[type="tel"],
+label > input[type="number"] {
+  margin-top: 0.4rem;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #ccc;
+  border-radius: var(--standard-border-radius);
+  font-family: inherit;
+  font-size: 1rem;
+}
+
+/* Radio and checkbox inputs in horizontal inline groups */
+label.radio-inline {
+  flex-direction: row; /* horizontal layout */
+  align-items: center;
+  margin-right: 1.5rem;
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 400;
+  color: var(--radio-text-color);
+}
+
+.radio-inline:has(input[type="radio"]:checked) {
+  font-weight: 500;
+  color: var(--primary-color);
+}
+
+label.radio-inline > input[type="radio"],
+label.radio-inline > input[type="checkbox"] {
+  margin: 0 0.4rem 0 0;
+  accent-color: var(--primary-color);
+  flex-shrink: 0;
+  width: auto;
+  height: auto;
+}
+
+/* Container for radio/checkbox groups side by side */
+.radio-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+/* Style the question paragraphs above radio groups */
+.radio-group > p {
+  flex-basis: 100%;
+  margin-bottom: 0.5rem;
+  font-weight: var(--header-font-weight);
+  color: var(--header-color);
+}
+
+button[type="submit"] {
+  display: block;
+  width: 100%;
+  background-color: var(--primary-color);
+  color: white;
+  font-weight: 700;
+  padding: 1rem;
+  border: none;
+  border-radius: var(--standard-border-radius);
+  font-size: 1.1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+
+  /* Add transitions for all changing properties */
+  transition: 
+    background-color 0.8s ease,
+    color 0.3s ease,
+    border 0.3s ease,
+    opacity 0.3s ease,
+    cursor 0.3s ease;
+}
+
+button[type="submit"]:disabled {
+  background-color: white;
+  cursor: not-allowed;
+  opacity: 0.6;
+  border: 1px solid #666;
+  color: #666;
+}
+
+
+button[type="submit"]:hover,
+button[type="submit"]:focus {
+  background-color: #94795b; /* Slightly darker shade */
+  outline: none;
+}
+
+input[type="text"]:focus,
+input[type="text"]:focus-visible,
+input[type="email"]:focus,
+input[type="email"]:focus-visible,
+input[type="tel"]:focus,
+input[type="tel"]:focus-visible,
+input[type="number"]:focus,
+input[type="number"]:focus-visible {
+  outline: none !important;
+  border: 1px solid var(--primary-color);
 }
 
 /* Responsive tweaks */
@@ -174,4 +454,105 @@ header {
   .logo img {
     height: 40px;
   }
+
+  label {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+input:focus-visible {
+  outline: 1px solid var(--primary-color) !important;
+  outline-offset: 2px;
 }
+
+  label > input[type="text"],
+  label > input[type="email"],
+  label > input[type="tel"],
+  label > input[type="number"] {
+    margin-top: 0.4rem;
+    width: 100%;
+  }
+
+  .radio-group {
+    gap: 1rem;
+  }
+
+  label.radio-inline {
+    margin-right: 1rem;
+  }
+
+  form {
+    padding: 1.5rem 0.5rem;
+
+    margin: 0;
+    border-radius: 0;
+  }
+
+  label {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  /* Inputs full width */
+  label > input[type="text"],
+  label > input[type="email"],
+  label > input[type="tel"],
+  label > input[type="number"] {
+    width: 100%;
+    font-size: 1rem;
+  }
+
+  /* Radio groups stack vertically */
+  .radio-group {
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  label.radio-inline {
+    margin-right: 0;
+    font-size: 1rem;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+    padding: 1.25rem;
+    font-size: 1.15rem;
+    border-radius: 1.2rem;
+  }
+}
+
+/* Medium screens (tablet) */
+@media (min-width: 601px) and (max-width: 900px) {
+  form {
+    width: 80%;
+    max-width: 600px;
+    padding: 2rem 2rem;
+  }
+
+  /* Slightly larger fonts for readability */
+  .form-header-text {
+    font-size: 1.1rem;
+  }
+
+  label.radio-inline {
+    font-size: 1.05rem;
+  }
+
+  button[type="submit"] {
+    padding: 1rem 1.25rem;
+    font-size: 1.1rem;
+  }
+}
+
+/* Adjust fieldset padding for smaller devices */
+@media (max-width: 480px) {
+  fieldset {
+    padding: 1rem 1rem;
+  }
+
+  legend {
+    font-size: 1.1rem;
+  }
+}
+
+
