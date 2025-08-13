@@ -209,7 +209,7 @@ header {
   flex-direction: column;
   justify-content: flex-end;
   border-radius: var(--standard-border-radius);
-  background-image: url('Images/Perfume-Booklet.png');
+  background-image: url('../Images/Perfume-Booklet.png');
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
