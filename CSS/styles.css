@@ -14,11 +14,19 @@ body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+/* Header Styles */
+
 header {
-  text-align: initial; 
-  padding: 1rem 2rem; 
-  /* box-shadow: 0 2px 8px rgba(0,0,0,0.04); */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rem; /* adjust to match logo/nav height */
+  text-align: initial;
+  padding: 1rem 2rem;
   box-shadow: 0 2px 8px rgba(180, 140, 110, 0.2);
+  background: #fff; /* needed so content doesn't show through */
+  z-index: 1000; /* ensures it sits above hero */
 }
 
 .header-inner {
@@ -60,6 +68,71 @@ header {
   color: #2d2d2d;
   transition: color 0.3s ease;
   padding: 0;
+}
+
+.box-shadow-base {
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Hero Section Styles */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    background-color: var(--header-color);
+    /* background-image: url('https://cdn-cjhkj.nitrocdn.com/krXSsXVqwzhduXLVuGLToUwHLNnSxUxO/assets/images/optimized/rev-ff94111/spotme.com/wp-content/uploads/2020/07/Hero-1.jpg'); */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+.hero-content {
+    height: 100vh;
+    width: 38rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.hero-content p {
+    font-size: 1.2rem;
+    letter-spacing: 1.1px;
+    margin-bottom: 2rem;
+    text-align: center;
+    padding: 1rem 1.5rem;
+
+    /* Glassmorphism effect */
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px) saturate(160%);
+    -webkit-backdrop-filter: blur(10px) saturate(160%);
+    border-radius: 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+.hero-content .hero-button-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.hero-content .hero-button {
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border-radius: var(--standard-border-radius);
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .core-offerings-wrapper {
