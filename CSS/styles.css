@@ -21,12 +21,12 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  height: 4rem; /* adjust to match logo/nav height */
+  height: 4rem;
   text-align: initial;
   padding: 1rem 2rem;
-  box-shadow: 0 2px 8px rgba(180, 140, 110, 0.2);
-  background: #fff; /* needed so content doesn't show through */
-  z-index: 1000; /* ensures it sits above hero */
+  /* box-shadow: 0 2px 8px rgba(180, 140, 110, 0.2);
+  background: #fff;  */
+  z-index: 1000; 
 }
 
 .header-inner {
@@ -44,11 +44,11 @@ header {
   display: flex;
   gap: 2.5rem;
   font-family: 'Montserrat', Arial, sans-serif;
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .nav-menu a {
-  color: #2d2d2d;
+  color: #fff;
   text-decoration: none;
   font-size: 1.1rem;
   letter-spacing: 1px;
@@ -65,7 +65,7 @@ header {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #2d2d2d;
+  color: #fff;
   transition: color 0.3s ease;
   padding: 0;
 }
@@ -79,14 +79,16 @@ header {
     position: relative;
     height: 100vh;
     background-color: var(--header-color);
-    /* background-image: url('https://cdn-cjhkj.nitrocdn.com/krXSsXVqwzhduXLVuGLToUwHLNnSxUxO/assets/images/optimized/rev-ff94111/spotme.com/wp-content/uploads/2020/07/Hero-1.jpg'); */
+    background-image: url('../Images/hero-perfume-bottle-placeholder.jpg'); 
     background-size: cover;
     background-position: center;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-end;
     color: white;
 }
+
+
 
 .hero-content {
     height: 100vh;
@@ -94,6 +96,7 @@ header {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding-right: 1.5rem;;
 }
 
 .hero-content h1 {
@@ -532,6 +535,7 @@ input[type="number"]:focus-visible {
 
   .logo img {
     height: 40px;
+    border-radius: 50%; /* JUST ADDING IN THE INTERIM TILL WE ESTABLISH A LOGO */
   }
 
   label {
