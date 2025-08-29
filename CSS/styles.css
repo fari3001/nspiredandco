@@ -14,6 +14,11 @@ body {
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
+footer {
+  height: 30vh;
+  background: linear-gradient(135deg, #b48c6e 0%, #e6c8b2 50%, #f5e6dc 100%);
+}
+
 /* Header Styles */
 
 header {
@@ -24,6 +29,7 @@ header {
   height: 4rem;
   text-align: initial;
   padding: 1rem 2rem;
+  background-color: white;
   /* box-shadow: 0 2px 8px rgba(180, 140, 110, 0.2);
   background: #fff;  */
   z-index: 1000; 
@@ -33,6 +39,10 @@ header {
   display: flex;
   align-items: center;
   justify-content: space-between;
+}
+
+.logo { 
+  width: 4rem;
 }
 
 .logo img {
@@ -48,7 +58,7 @@ header {
 }
 
 .nav-menu a {
-  color: #fff;
+  color: var(--header-color);
   text-decoration: none;
   font-size: 1.1rem;
   letter-spacing: 1px;
@@ -65,7 +75,7 @@ header {
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
-  color: #fff;
+  color: var(--header-color);
   transition: color 0.3s ease;
   padding: 0;
 }
@@ -77,7 +87,7 @@ header {
 /* Hero Section Styles */
 .hero-section {
     position: relative;
-    height: 100vh;
+    height: 850px;
     background-color: var(--header-color);
     background-image: url('../Images/hero-perfume-bottle-placeholder.jpg'); 
     background-size: cover;
@@ -88,7 +98,66 @@ header {
     color: white;
 }
 
+.book-now-wrapper {
+    position: relative;
+    height: 650px;
+    background-color: var(--header-color);
+    background-image: url('../Images/hero-perfume-bottle-placeholder.jpg'); 
+    background-size: cover;
+    background-position: center;
+}
 
+.benefit-highlights-wrapper,
+.product-offerings-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    margin: 1rem 0;
+}
+
+.product-offerings-wrapper {
+  margin: 2rem 0 1rem;
+}
+
+.product-offerings-wrapper {
+      /* height: 16.9rem; */
+}
+
+.product-card {
+      display: flex;
+    flex-direction: column; 
+    overflow: hidden; 
+}
+
+.product-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.product-card img:hover {
+    transform: scale(1.08);
+    transition: transform 2s cubic-bezier(.215, .61, .355, 1);
+}
+
+
+.product-offerings-wrapper h4 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.product-card {
+  width: 30%;
+}
+
+.benefit-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 
 .hero-content {
     height: 100vh;
