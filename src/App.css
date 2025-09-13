@@ -96,7 +96,7 @@ header {
     position: relative;
     height: 850px;
     background-color: var(--header-color);
-    background-image: url('../Images/hero-perfume-bottle-placeholder.jpg'); 
+    background-image: url('./assets/hero-perfume-bottle-placeholder.jpg'); 
     background-size: cover;
     background-position: center;
     display: flex;
