@@ -2,7 +2,10 @@ import StarPlaceholder from './assets/StarPlaceholder.png';
 import PerfumeBottle from './assets/hero-perfume-bottle-placeholder.jpg';
 
 import './App.css'
-import { Link } from 'react-router-dom';
+import { Link, Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
+import Shop from './pages/Shop';
+import Services from './pages/Services';
 
 function App() {
   return (
@@ -204,6 +207,11 @@ function App() {
 </header>
 
 <main>
+    <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/shop" element={<Shop />} />
+        <Route path="/services" element={<Services />} />
+    </Routes>
 <div className="hero-section box-shadow-base">
 {/* TAKING OUT FOR NOW UNTIL FRAME IS READY
   <div className="hero-content">
