@@ -1,14 +1,34 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
-import './App.css'
+import './index.css'
 // import App from './App'
-// import { HashRouter } from 'react-router-dom'
+import { HashRouter } from 'react-router-dom'
 
-createRoot(document.getElementById('root')!).render(
+// createRoot(document.getElementById('root')!).render(
+//   <StrictMode>
+//     <HashRouter>
+//       <App />
+//     </HashRouter>
+//   </StrictMode>,
+// )
+
+
+
+// Get root element
+const rootElement = document.getElementById('root');
+
+if (!rootElement) {
+  throw new Error('Root element not found');
+}
+
+// Render the app
+createRoot(rootElement).render(
   <StrictMode>
-    <p>hello</p>
-    {/* <HashRouter>
-      <App />
-    </HashRouter> */}
-  </StrictMode>,
-)
+    <HashRouter>
+      {/* You can temporarily render a debug message inside App */}
+      {/* <App> */}
+        <p>hello — debug mode</p>
+      {/* </App> */}
+    </HashRouter>
+  </StrictMode>
+);
