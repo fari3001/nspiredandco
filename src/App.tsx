@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import StarPlaceholder from './assets/StarPlaceholder.png';
 import PerfumeBottle from './assets/hero-perfume-bottle-placeholder.jpg';
 
