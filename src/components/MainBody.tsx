@@ -1,12 +1,7 @@
-import React from 'react';
 import StarPlaceholder from '../assets/StarPlaceholder.png';
 import PerfumeBottle from '../assets/hero-perfume-bottle-placeholder.jpg';
 
-export interface MainBodyProps {
-    companyName: string;
-}
-
-export function MainBody({ companyName }: MainBodyProps) {
+export function MainBody() {
     return (
         <>
 <div className="hero-section box-shadow-base">

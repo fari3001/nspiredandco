@@ -1,6 +1,3 @@
-// Icons.tsx
-import React from "react";
-
 export const Logo = (
     <svg
   version="1.1"

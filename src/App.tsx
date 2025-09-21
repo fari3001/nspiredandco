@@ -45,7 +45,7 @@ function App() {
             <Route path="/shop" element={<Shop />} />
             <Route path="/services" element={<Services />} />
         </Routes>
-        <MainBody companyName='Nspirerd and Co' />
+        <MainBody />
     </main>
     <Footer companyName='Nspirerd and Co' />
     </>
