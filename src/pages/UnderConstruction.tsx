@@ -1,4 +1,5 @@
 import React from 'react';
+import UnderConstructionImg from '../assets/UnderConstruction3.png';
 
 const UnderConstruction: React.FC = () => (
     <div style={{
@@ -8,7 +9,7 @@ const UnderConstruction: React.FC = () => (
         overflow: 'hidden'
     }}>
         <img
-            src="../src/assets/UnderConstruction3.png"
+            src={UnderConstructionImg}
             alt="Under Construction"
             style={{
                 position: 'absolute',
