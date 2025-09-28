@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Contact: React.FC = () => {
+const Coverage: React.FC = () => {
     return (
         <div>
-            <h1>Contact</h1>
+            <h1>Coverage</h1>
             {/* Add your content here */}
         </div>
     );
 };
 
-export default Contact;
+export default Coverage;

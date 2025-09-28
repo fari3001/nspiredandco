@@ -1,3 +1,5 @@
+     import { Link } from "react-router-dom";
+     
      type FoooterProps = {
         companyName: string;
      };
@@ -14,32 +16,32 @@
                 <div className="footer-column">
                     <h4>Products</h4>
                     <div className="footer-links">
-                        <a href="">Shop</a>
-                        <a href="">Services</a>
-                        <a href="">Experiences</a>
+                        <Link to="/shop">Shop</Link>
+                        <Link to="/services">Services</Link>
+                        <Link to="/experiences">Experiences</Link>
                     </div>
                 </div>
                 <div className="footer-column">
                     <h4>About Us</h4>
                     <div className="footer-links">
-                        <a href="">Our Story</a>
-                        <a href="">What we do</a>
-                        <a href="">Mission</a>
+                        <Link to="/our-story">Our Story</Link>
+                        <Link to="/what-we-do">What we do</Link>
+                        <Link to="/mission">Mission</Link>
                     </div>
                 </div>
                 <div className="footer-column">
                     <h4>Events</h4>
                     <div className="footer-links">
-                        <a href="">Bookings</a>
-                        <a href="">Get a quote</a>
-                        <a href="">Coverage</a>
+                        <Link to="/bookings">Bookings</Link>
+                        <Link to="/get-a-quote">Get a quote</Link>
+                        <Link to="/coverage">Coverage</Link>
                     </div>  
                     </div>
                 <div className="footer-column">
                     <h4>Get In Touch</h4>
                     <div className="footer-links">
-                        <a href="">Questions or feedback</a>
-                        <a href="">We'd love to hear from you</a>
+                        <Link to="/contact">Questions or feedback</Link>
+                        <Link to="/contact">We'd love to hear from you</Link>
 
                         <div className="footer-social-links">
                             <a href="https://www.instagram.com/nspired_co/">

@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Contact: React.FC = () => {
+const Mission: React.FC = () => {
     return (
         <div>
-            <h1>Contact</h1>
+            <h1>Mission</h1>
             {/* Add your content here */}
         </div>
     );
 };
 
-export default Contact;
+export default Mission;
