@@ -3,6 +3,7 @@
     --paragraph-color: #666;
     --header-font-weight: 600;
     --standard-border-radius: 1.5rem;
+    --card-border-radius: 1rem;
     --primary-color: #b48c6e;
     --content-margin: 0.5rem;
     --form-box-shadow: 0 0 12px rgba(0,0,0,0.1);
@@ -134,8 +135,38 @@ header {
   margin: 2rem 0 1rem;
 }
 
-.product-offerings-wrapper {
-      /* height: 16.9rem; */
+/* About Us Styles */
+
+.about-us-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 1rem;
+}
+
+.about-us-header-image {
+  height: 40vh;
+  width: 100%;
+}
+
+.about-us-header-image .hero-section {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.about-us-text {
+    max-width: 800px;
+    text-align: center;
+    color: var(--header-color);
+}
+
+
+/* Product Card Styles */
+
+.shop-product-card {
+  border-radius: var(--card-border-radius);
 }
 
 .shop-product-card,
@@ -153,11 +184,17 @@ header {
     transition: transform 0.3s ease;
 }
 
-.shop-product-card img {  
-    width: 25rem;
+.product-image {
+  /* WILL ESTABLISH CONSISTENT CARD SIZES LATER */
+    width: 30vw;
     height: 25rem;
+    overflow: hidden;
+}
+
+.shop-product-card img {  
+    width: 100%;
+    height: 100%;
     object-fit: cover;
-    border-radius: 4px;
 }
 
 .shop-product-card img:hover,
@@ -168,6 +205,37 @@ header {
 
 .shop-product-card {
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1)
+}
+
+.product-info {
+  margin-top: 0.5rem;
+}
+
+.product-price {
+  margin: 1rem 0;
+}
+
+.product-info h2,
+.product-info p { 
+  margin: 0;
+}
+
+.shop-product-card h2,
+.shop-product-card p,
+.shop-product-card span {
+    margin: 0.3rem 0;
+    padding-left: 1rem;
+}
+
+.shop-product-card h2 {
+    font-weight: 500;
+    font-size: 1.2rem;
+}
+
+.product-info span {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--paragraph-color);
 }
 
 .product-offerings-wrapper h4 {

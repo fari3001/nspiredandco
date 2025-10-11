@@ -3,7 +3,8 @@ import type { Product } from "../models/Product";
 export const products: Product[] = [
     {
         id: '1',
-        name: 'Eau de Parfum - Floral Essence',
+        name: 'Lustre',
+        type: 'Eau de Parfum',
         scent: 'Floral',
         size: '50ml',
         price: 120,
@@ -12,16 +13,18 @@ export const products: Product[] = [
     },
     {
         id: '2',
-        name: 'Eau de Parfum - Woody Mystique',
+        name: 'Eternal Bloom',
+        type: 'Eau de Parfum',
         scent: 'Woody',
         size: '50ml',
         price: 130,
         description: 'A rich and warm fragrance with notes of sandalwood, cedar, and amber, evoking a sense of mystery.',
-        imageUrl: '/images/woody-mystique.jpg',
+        imageUrl: '../src/assets/placeholder/FloralPerfumeMistPlaceholder.png',
     },
         {
         id: '1',
-        name: 'Eau de Parfum - Floral Essence',
+        name: 'Golden Hour',
+        type: 'Eau de Parfum',
         scent: 'Floral',
         size: '50ml',
         price: 120,
@@ -30,16 +33,18 @@ export const products: Product[] = [
     },
     {
         id: '2',
-        name: 'Eau de Parfum - Woody Mystique',
+        name: 'Ivory Veil',
+        type: 'Eau de Parfum',
         scent: 'Woody',
         size: '50ml',
         price: 130,
         description: 'A rich and warm fragrance with notes of sandalwood, cedar, and amber, evoking a sense of mystery.',
-        imageUrl: '/images/woody-mystique.jpg',
+        imageUrl: '../src/assets/placeholder/FloralPerfumeMistPlaceholder.png',
     },
         {
         id: '1',
-        name: 'Eau de Parfum - Floral Essence',
+        name: 'Promise',
+        type: 'Eau de Parfum',
         scent: 'Floral',
         size: '50ml',
         price: 120,
@@ -48,11 +53,12 @@ export const products: Product[] = [
     },
     {
         id: '2',
-        name: 'Eau de Parfum - Woody Mystique',
+        name: 'Red Door',
+        type: 'Eau de Parfum',
         scent: 'Woody',
         size: '50ml',
         price: 130,
         description: 'A rich and warm fragrance with notes of sandalwood, cedar, and amber, evoking a sense of mystery.',
-        imageUrl: '/images/woody-mystique.jpg',
+        imageUrl: '../src/assets/placeholder/FloralPerfumeMistPlaceholder.png',
     }
 ];

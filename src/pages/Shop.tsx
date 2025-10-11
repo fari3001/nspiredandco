@@ -1,5 +1,5 @@
 import React from 'react';
-import {products} from '../data/products';
+import { products } from '../data/products';
 
 const Shop: React.FC = () => {
     return (
@@ -7,24 +7,28 @@ const Shop: React.FC = () => {
             <div className="component-header">
                 <h1>Our Collection</h1>
             </div>
-        <div className="products-container">
-            {products.map((product) => (
-                <div className="product-wrapper">
-                    <div
-                        key={product.id}
-                        className="shop-product-card">
-                        <img
-                            src={product.imageUrl}
-                            alt={product.name}
-                        />
-                        <h2 style={{ fontSize: '1.2rem', margin: '0.5rem 0' }}>${product.price}</h2>
-                        <p className='product-name'>{product.name}</p>
-                        <p className='product-size'>{product.size}</p>
-                        {/* <p style={{ fontWeight: 'bold' }}>${product.price.toFixed(2)}</p> */}
+            <div className="products-container">
+                {products.map((product) => (
+                    <div className="product-wrapper">
+                        <div
+                            key={product.id}
+                            className="shop-product-card">
+                            <div className='product-image'>
+                                <img
+                                    src={product.imageUrl}
+                                    alt={product.name} />
+                            </div>
+                            <div className='product-info'>
+                                <h2 className='product-name'>{product.name}</h2>
+                                <span>{`${product.type} - ${product.size}`}</span>
+                            </div>
+                            <div className="product-price">
+                                <h2 style={{ fontSize: '1.2rem' }}>${product.price}</h2>
+                            </div>
+                        </div>
                     </div>
-            </div>
                 ))}
-        </div>
+            </div>
         </div>
     );
 };
