@@ -22,7 +22,7 @@ export const products: Product[] = [
         imageUrl: '../src/assets/placeholder/FloralPerfumeMistPlaceholder.png',
     },
         {
-        id: '1',
+        id: '3',
         name: 'Golden Hour',
         type: 'Eau de Parfum',
         scent: 'Floral',
@@ -32,7 +32,7 @@ export const products: Product[] = [
         imageUrl: '../src/assets/placeholder/FloralPerfumeMistPlaceholder.png',
     },
     {
-        id: '2',
+        id: '4',
         name: 'Ivory Veil',
         type: 'Eau de Parfum',
         scent: 'Woody',
@@ -42,7 +42,7 @@ export const products: Product[] = [
         imageUrl: '../src/assets/placeholder/FloralPerfumeMistPlaceholder.png',
     },
         {
-        id: '1',
+        id: '5',
         name: 'Promise',
         type: 'Eau de Parfum',
         scent: 'Floral',
@@ -52,7 +52,7 @@ export const products: Product[] = [
         imageUrl: '../src/assets/placeholder/FloralPerfumeMistPlaceholder.png',
     },
     {
-        id: '2',
+        id: '6',
         name: 'Red Door',
         type: 'Eau de Parfum',
         scent: 'Woody',
