@@ -9,6 +9,7 @@
     --form-box-shadow: 0 0 12px rgba(0,0,0,0.1);
     --radio-text-color: #353535;
     --standard-container-padding: 1rem 2rem;
+    --input-standard-border-radius: 0.4rem;
 }
 
 body {
@@ -20,6 +21,11 @@ footer {
   height: 30vh;
   padding: 2rem;
   background: linear-gradient(135deg, #b48c6e 0%, #e6c8b2 50%, #f5e6dc 100%);
+}
+
+/* Generic Styles */
+.flex-wrapper {
+  display: flex;
 }
 
 /* Header Styles */
@@ -34,7 +40,7 @@ header {
   text-align: initial;
   padding: var(--standard-container-padding);
   background-color: white;
-  border-bottom: 1px solid #D3D7DA;
+  /* border-bottom: 1px solid #D3D7DA; */
   z-index: 1000; 
 }
 
@@ -153,7 +159,7 @@ header {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 1rem;
+    /* border-radius: 1rem; */
     /* box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1); */
 }
 
@@ -188,13 +194,32 @@ header {
 /* Contact Us Styles */
 
 .contact-form-container {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: 1.5rem;
-  padding: 1.5rem;
-  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-  border: 1px solid rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(12px);
+    /* -webkit-backdrop-filter: blur(12px); */
+    /* border-radius: 1.5rem; */
+    /* padding: 1.5rem; */
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    /* border: 1px solid rgba(255, 255, 255, 0.7); */
+    display: flex
+;
+    flex-direction: column;
+    align-items: center;
+}
+
+.flex-row {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.contact-us-header-text {
+  width: 30%;
+}
+
+.contact-body-container {
+  width: 60%;
+  gap: 1.5rem;
+  padding: 2rem;
 }
 
 /* Form Header */
@@ -203,7 +228,11 @@ header {
   line-height: 2rem;
   font-weight: 700;
   color: #2d2419;
-  margin-bottom: 0.5rem;
+  margin: 0
+}
+
+.contact-body-inner {
+  width: 100%;
 }
 
 .contact-form-subtitle {
@@ -215,13 +244,15 @@ header {
 
 .contact-form {
   display: flex;
+  padding: 0;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 1rem;
 }
 
 .form-group {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 
 .form-row-two-columns {
@@ -244,7 +275,7 @@ header {
 .form-textarea {
   width: 100%;
   padding: 0.75rem 1rem;
-  border-radius: 1rem;
+  border-radius: var(--input-standard-border-radius);
   border: 1px solid #d7c4a3;
   background: rgba(255, 255, 255, 0.5);
   font-family: inherit;
@@ -728,11 +759,15 @@ form {
   max-width: 600px;
   box-sizing: border-box;
   background: #fff;
-  padding: 2rem 2.5rem;
-  margin: 2rem auto;
+  padding: 1rem 1.5rem;
   border-radius: var(--standard-border-radius);
   box-shadow: var(--form-box-shadow);
   color: var(--header-color);
+}
+
+.contact-form {
+  width: 70%;
+  box-shadow: none;
 }
 
 fieldset {
@@ -823,14 +858,13 @@ label.radio-inline > input[type="checkbox"] {
 }
 
 button[type="submit"] {
-  display: block;
-  width: 100%;
+  width: auto;
   background-color: var(--primary-color);
   color: white;
   font-weight: 700;
   padding: 1rem;
   border: none;
-  border-radius: var(--standard-border-radius);
+  border-radius: var(--input-standard-border-radius);
   font-size: 1.1rem;
   cursor: pointer;
   margin-top: 1rem;
@@ -1083,7 +1117,6 @@ input:focus-visible {
 
   form {
     padding: 1.5rem 0.5rem;
-
     margin: 0;
     border-radius: 0;
   }

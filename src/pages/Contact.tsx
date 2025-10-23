@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import PerfumeBottle from '../assets/hero-perfume-bottle-placeholder.jpg';
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -42,35 +43,33 @@ export default function Contact() {
 
     return (
         <div className="contact-form-container">
-            <h2 className="contact-form-title">Send Us a Message</h2>
-            <p className="contact-form-subtitle">
-                Fill out the form below and we'll get back to you as soon as possible.
-            </p>
+            <div className="about-us-header-image">
+                <img src={PerfumeBottle} alt="Nspired Perfume" />
+            </div>
 
+            <div className="contact-body-container">
+                <div className="contact-body-inner flex-wrapper">
             <form onSubmit={handleSubmit} className="contact-form">
-                {/* Full Name */}
-                <div className="form-group">
-                    <label htmlFor="name" className="form-label">
-                        Full Name *
-                    </label>
-                    <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="form-input"
-                        placeholder="John Doe"
-                    />
-                </div>
-
-                {/* Email + Phone */}
-                <div className="form-row-two-columns">
                     <div className="form-group">
-                        <label htmlFor="email" className="form-label">
+                        {/* <label htmlFor="name" className="form-label">
+                            Full Name *
+                        </label> */}
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleChange}
+                            required
+                            className="form-input"
+                            placeholder="Name"
+                        />
+                    </div>
+
+                    <div className="form-group">
+                        {/* <label htmlFor="email" className="form-label">
                             Email Address *
-                        </label>
+                        </label> */}
                         <input
                             type="email"
                             id="email"
@@ -79,14 +78,16 @@ export default function Contact() {
                             onChange={handleChange}
                             required
                             className="form-input"
-                            placeholder="john@example.com"
+                            placeholder="Email"
                         />
                     </div>
 
+                {/* Email + Phone */}
+                <div className="form-row-two-columns">
                     <div className="form-group">
-                        <label htmlFor="phone" className="form-label">
+                        {/* <label htmlFor="phone" className="form-label">
                             Phone Number
-                        </label>
+                        </label> */}
                         <input
                             type="tel"
                             id="phone"
@@ -94,16 +95,16 @@ export default function Contact() {
                             value={formData.phone}
                             onChange={handleChange}
                             className="form-input"
-                            placeholder="+61 412 345 678"
+                            placeholder="Phone Number"
                         />
                     </div>
                 </div>
 
                 {/* Message */}
                 <div className="form-group">
-                    <label htmlFor="message" className="form-label">
+                    {/* <label htmlFor="message" className="form-label">
                         Message *
-                    </label>
+                    </label> */}
                     <textarea
                         id="message"
                         name="message"
@@ -112,11 +113,11 @@ export default function Contact() {
                         required
                         rows={6}
                         className="form-textarea"
-                        placeholder="Tell us how we can help you..."
+                        placeholder="How can we help you?"
                     />
                 </div>
-
-                {/* Submit */}
+            
+            <div className="form-button">
                 <button
                     type="submit"
                     disabled={isSubmitting}
@@ -124,7 +125,16 @@ export default function Contact() {
                 >
                     {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
+            </div>
             </form>
+                <div className="contact-us-header-text">
+                    <h2 className="contact-form-title">Send Us a Message</h2>
+                    <p className="contact-form-subtitle">
+                        Fill out the form below and we'll get back to you as soon as possible. We look forward to hearing from you! Fill out the form below and we'll get back to you as soon as possible. We look forward to hearing from you!Fill out the form below and we'll get back to you as soon as possible. We look forward to hearing from you!Fill out the form below and we'll get back to you as soon as possible. We look forward to hearing from you!
+                    </p>
+                </div>
+                </div>
+            </div>
         </div>
     );
 }
