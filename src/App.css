@@ -36,7 +36,6 @@ header {
   top: 0;
   left: 0;
   right: 0; */
-  height: 4rem;
   text-align: initial;
   padding: var(--standard-container-padding);
   background-color: white;
@@ -761,11 +760,10 @@ form {
   background: #fff;
   padding: 1rem 1.5rem;
   border-radius: var(--standard-border-radius);
-  box-shadow: var(--form-box-shadow);
   color: var(--header-color);
 }
 
-.contact-form {
+.contact-us-form {
   width: 70%;
   box-shadow: none;
 }
