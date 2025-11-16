@@ -1,138 +1,224 @@
-import { Link } from "react-router-dom";
+import React, { useState, type JSX } from 'react';
+import { Sparkles, Droplet, Home, Car, Heart, Users, Gift, type LucideIcon } from 'lucide-react';
 
-type FooterProps = {
-  companyName: string;
-};
+interface Benefit {
+  icon: LucideIcon;
+  title: string;
+  description: string;
+}
 
-function Footer({ companyName }: FooterProps) {
+interface Experience {
+  title: string;
+  icon: LucideIcon;
+  hero: string;
+  description: string;
+  benefits: Benefit[];
+  highlight: string;
+}
+
+interface Experiences {
+  events: Experience;
+  bespoke: Experience;
+  lifestyle: Experience;
+}
+
+type ExperienceKey = keyof Experiences;
+
+export default function ExperiencesPage(): JSX.Element {
+  const [activeTab, setActiveTab] = useState<ExperienceKey>('events');
+
+  const experiences: Experiences = {
+    events: {
+      title: "Event Perfume Bar",
+      icon: Users,
+      hero: "Transform Your Celebration",
+      description: "Elevate your wedding, party, or special event with an interactive perfume experience your guests will never forget.",
+      benefits: [
+        {
+          icon: Sparkles,
+          title: "Interactive Luxury",
+          description: "Guests explore six curated signature scents, discovering their perfect fragrance in an elegant, hands-on experience."
+        },
+        {
+          icon: Gift,
+          title: "Memorable Favors",
+          description: "Each guest takes home a personalized spray bottle filled with their chosen scent—a sophisticated keepsake that captures the essence of your celebration."
+        },
+        {
+          icon: Heart,
+          title: "Social Experience",
+          description: "Create natural conversation starters and memorable moments as guests bond over fragrance discovery."
+        }
+      ],
+      highlight: "Perfect for weddings, corporate events, birthday celebrations, and intimate gatherings."
+    },
+    bespoke: {
+      title: "Bespoke Fragrances",
+      icon: Droplet,
+      hero: "Your Signature Scent",
+      description: "Discover a fragrance as unique as you are. Our expert perfumers craft one-of-a-kind scents tailored to your personality and preferences.",
+      benefits: [
+        {
+          icon: Heart,
+          title: "Truly Personal",
+          description: "Express your individuality with a custom fragrance that reflects your style, memories, and essence."
+        },
+        {
+          icon: Sparkles,
+          title: "Expert Craftsmanship",
+          description: "Collaborate with skilled perfumers who guide you through the art of scent creation, from concept to finished product."
+        },
+        {
+          icon: Gift,
+          title: "Exclusive & Timeless",
+          description: "Own a signature scent that's exclusively yours—a luxurious statement piece for your fragrance wardrobe."
+        }
+      ],
+      highlight: "Ideal for personal expression, meaningful gifts, or creating a signature scent for your brand."
+    },
+    lifestyle: {
+      title: "Lifestyle Collection",
+      icon: Home,
+      hero: "Scent Every Moment",
+      description: "Extend your fragrance journey beyond the bottle with our curated collection of room mists and car fresheners.",
+      benefits: [
+        {
+          icon: Home,
+          title: "Ambient Elegance",
+          description: "Transform your living spaces with luxurious room mists that create instant atmosphere and warmth."
+        },
+        {
+          icon: Car,
+          title: "Travel in Style",
+          description: "Our minimalist car fresheners bring sophisticated fragrance to every journey with sleek, modern design."
+        },
+        {
+          icon: Sparkles,
+          title: "Cohesive Luxury",
+          description: "Match your personal fragrance across all aspects of life—from body to home to car—for a complete sensory experience."
+        }
+      ],
+      highlight: "Designed for those who appreciate refined aesthetics and quality in every detail."
+    }
+  };
+
+  const current: Experience = experiences[activeTab];
+  const IconComponent: LucideIcon = current.icon;
+
   return (
-    <footer className="footer">
-      <div className="footer-inner">
-        <div className="footer-left-wrapper">
-          <div className="footer-logo">{companyName}</div>
-          <div className="contract-wrapper"></div>
-        </div>
-        <div className="footer-right-wrapper">
-          <div className="footer-column">
-            <h4>Products</h4>
-            <div className="footer-links">
-              <Link to="/shop">Shop</Link>
-              <Link to="/services">Services</Link>
-              <Link to="/experiences">Experiences</Link>
-            </div>
-          </div>
-          <div className="footer-column">
-            <h4>About Us</h4>
-            <div className="footer-links">
-              <Link to="/our-story">Our Story</Link>
-              <Link to="/what-we-do">What we do</Link>
-              <Link to="/mission">Mission</Link>
-            </div>
-          </div>
-          <div className="footer-column">
-            <h4>Events</h4>
-            <div className="footer-links">
-              <Link to="/bookings">Bookings</Link>
-              <Link to="/get-a-quote">Get a quote</Link>
-              <Link to="/coverage">Coverage</Link>
-            </div>
-          </div>
-          <div className="footer-column">
-            <h4>Get In Touch</h4>
-            <div className="footer-links">
-              <Link to="/contact">Questions or feedback</Link>
-              <Link to="/contact">We'd love to hear from you</Link>
+    <div className="bg-gradient-to-br from-rose-50 via-white to-amber-50">
+   
 
-              <div className="footer-social-links">
-                <a
-                  href="https://www.instagram.com/nspired_co/"
-                  aria-label="Instagram"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    role="img"
-                    aria-label="Instagram icon"
+
+      {/* Footer */}
+      <footer className="min-h-[35vh] px-12 py-16 relative overflow-hidden" style={{
+        background: 'linear-gradient(135deg, #b48c6e 0%, #e6c8b2 50%, #f5e6dc 100%)'
+      }}>
+        {/* Subtle overlay pattern */}
+        <div className="absolute inset-0 pointer-events-none" style={{
+          backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(107, 68, 35, 0.03) 1px, transparent 0)',
+          backgroundSize: '40px 40px'
+        }}></div>
+
+        <div className="max-w-7xl mx-auto relative z-10 flex justify-between gap-12">
+          {/* Left Section */}
+          <div className="w-[28%] flex flex-col gap-6">
+            <div className="text-3xl font-bold italic tracking-wide mb-2" style={{
+              color: '#2d2419',
+              textShadow: '0 1px 2px rgba(255, 255, 255, 0.3)'
+            }}>
+              NSPIRED & CO
+            </div>
+          </div>
+
+          {/* Right Section - Links */}
+          <div className="w-[72%] flex justify-between gap-10">
+            {/* Products */}
+            <div className="flex-1">
+              <h4 className="text-sm font-semibold mb-6 uppercase tracking-widest relative pb-3" style={{ color: '#6b4423' }}>
+                Products
+                <span className="absolute bottom-0 left-0 w-8 h-0.5 bg-[#6b4423] opacity-50"></span>
+              </h4>
+              <div className="flex flex-col gap-3.5 text-[15px]">
+                <a href="#/shop" className="text-[#2d2419] opacity-85 hover:opacity-100 hover:text-[#6b4423] hover:pl-2 transition-all duration-300">Shop</a>
+                <a href="#/services" className="text-[#2d2419] opacity-85 hover:opacity-100 hover:text-[#6b4423] hover:pl-2 transition-all duration-300">Services</a>
+                <a href="#/experiences" className="text-[#2d2419] opacity-85 hover:opacity-100 hover:text-[#6b4423] hover:pl-2 transition-all duration-300">Experiences</a>
+              </div>
+            </div>
+
+            {/* About Us */}
+            <div className="flex-1">
+              <h4 className="text-sm font-semibold mb-6 uppercase tracking-widest relative pb-3" style={{ color: '#6b4423' }}>
+                About Us
+                <span className="absolute bottom-0 left-0 w-8 h-0.5 bg-[#6b4423] opacity-50"></span>
+              </h4>
+              <div className="flex flex-col gap-3.5 text-[15px]">
+                <a href="#/about-us" className="text-[#2d2419] opacity-85 hover:opacity-100 hover:text-[#6b4423] hover:pl-2 transition-all duration-300">Our Story</a>
+                <a href="#/what-we-do" className="text-[#2d2419] opacity-85 hover:opacity-100 hover:text-[#6b4423] hover:pl-2 transition-all duration-300">What we do</a>
+                <a href="#/mission" className="text-[#2d2419] opacity-85 hover:opacity-100 hover:text-[#6b4423] hover:pl-2 transition-all duration-300">Mission</a>
+              </div>
+            </div>
+
+            {/* Events */}
+            <div className="flex-1">
+              <h4 className="text-sm font-semibold mb-6 uppercase tracking-widest relative pb-3" style={{ color: '#6b4423' }}>
+                Events
+                <span className="absolute bottom-0 left-0 w-8 h-0.5 bg-[#6b4423] opacity-50"></span>
+              </h4>
+              <div className="flex flex-col gap-3.5 text-[15px]">
+                <a href="#/bookings" className="text-[#2d2419] opacity-85 hover:opacity-100 hover:text-[#6b4423] hover:pl-2 transition-all duration-300">Bookings</a>
+                <a href="#/get-a-quote" className="text-[#2d2419] opacity-85 hover:opacity-100 hover:text-[#6b4423] hover:pl-2 transition-all duration-300">Get a quote</a>
+                <a href="#/coverage" className="text-[#2d2419] opacity-85 hover:opacity-100 hover:text-[#6b4423] hover:pl-2 transition-all duration-300">Coverage</a>
+              </div>
+            </div>
+
+            {/* Get In Touch */}
+            <div className="flex-1">
+              <h4 className="text-sm font-semibold mb-6 uppercase tracking-widest relative pb-3" style={{ color: '#6b4423' }}>
+                Get In Touch
+                <span className="absolute bottom-0 left-0 w-8 h-0.5 bg-[#6b4423] opacity-50"></span>
+              </h4>
+              <div className="flex flex-col gap-3.5 text-[15px]">
+                <a href="#/contact" className="text-[#2d2419] opacity-85 hover:opacity-100 hover:text-[#6b4423] hover:pl-2 transition-all duration-300">Questions or feedback</a>
+                <a href="#/contact" className="text-[#2d2419] opacity-85 hover:opacity-100 hover:text-[#6b4423] hover:pl-2 transition-all duration-300">We'd love to hear from you</a>
+                
+                {/* Social Icons */}
+                <div className="flex gap-4 mt-6">
+                  <a 
+                    href="https://www.instagram.com/nspired_co/" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-y-1"
+                    style={{
+                      background: 'rgba(107, 68, 35, 0.12)',
+                      border: '1px solid rgba(107, 68, 35, 0.2)',
+                      backdropFilter: 'blur(10px)'
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.background = '#6b4423';
+                      e.currentTarget.style.boxShadow = '0 8px 16px rgba(107, 68, 35, 0.25)';
+                      const svg = e.currentTarget.querySelector('svg');
+                      if (svg) svg.style.color = '#f5e6dc';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.background = 'rgba(107, 68, 35, 0.12)';
+                      e.currentTarget.style.boxShadow = 'none';
+                      const svg = e.currentTarget.querySelector('svg');
+                      if (svg) svg.style.color = '#6b4423';
+                    }}
                   >
-                    <rect
-                      x="2"
-                      y="2"
-                      width="20"
-                      height="20"
-                      rx="5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                    <circle
-                      cx="12"
-                      cy="12"
-                      r="5"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                    <circle cx="17.5" cy="6.5" r="1.25" fill="currentColor" />
-                  </svg>
-                </a>
-                <a
-                  href="#"
-                  aria-label="Facebook"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    role="img"
-                    aria-label="Facebook icon"
-                  >
-                    <rect
-                      x="2"
-                      y="2"
-                      width="20"
-                      height="20"
-                      rx="4"
-                      fill="none"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                    />
-                    <path
-                      d="M14 8h2V5h-2c-2.2 0-4 1.8-4 4v2H8v3h2v6h3v-6h2.1l.4-3H13V9c0-.6.4-1 1-1z"
-                      fill="currentColor"
-                    />
-                  </svg>
-                </a>
-                <a
-                  href="#"
-                  aria-label="TikTok"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <svg
-                    fill="currentColor"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 32 32"
-                    version="1.1"
-                    xmlns="http://www.w3.org/2000/svg"
-                  >
-                    <path d="M16.656 1.029c1.637-0.025 3.262-0.012 4.886-0.025 0.054 2.031 0.878 3.859 2.189 5.213l-0.002-0.002c1.411 1.271 3.247 2.095 5.271 2.235l0.028 0.002v5.036c-1.912-0.048-3.71-0.489-5.331-1.247l0.082 0.034c-0.784-0.377-1.447-0.764-2.077-1.196l0.052 0.034c-0.012 3.649 0.012 7.298-0.025 10.934-0.103 1.853-0.719 3.543-1.707 4.954l0.020-0.031c-1.652 2.366-4.328 3.919-7.371 4.011l-0.014 0c-0.123 0.006-0.268 0.009-0.414 0.009-1.73 0-3.347-0.482-4.725-1.319l0.040 0.023c-2.508-1.509-4.238-4.091-4.558-7.094l-0.004-0.041c-0.025-0.625-0.037-1.25-0.012-1.862 0.49-4.779 4.494-8.476 9.361-8.476 0.547 0 1.083 0.047 1.604 0.136l-0.056-0.008c0.025 1.849-0.050 3.699-0.050 5.548-0.423-0.153-0.911-0.242-1.42-0.242-1.868 0-3.457 1.194-4.045 2.861l-0.009 0.030c-0.133 0.427-0.21 0.918-0.21 1.426 0 0.206 0.013 0.41 0.037 0.61l-0.002-0.024c0.332 2.046 2.086 3.59 4.201 3.59 0.061 0 0.121-0.001 0.181-0.004l-0.009 0c1.463-0.044 2.733-0.831 3.451-1.994l0.010-0.018c0.267-0.372 0.45-0.822 0.511-1.311l0.001-0.014c0.125-2.237 0.075-4.461 0.087-6.698 0.012-5.036-0.012-10.060 0.025-15.083z"></path>
-                  </svg>
-                </a>
+                    <svg width="20" height="20" viewBox="0 0 24 24" style={{ color: '#6b4423', transition: 'color 0.3s ease' }}>
+                      <rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="currentColor" strokeWidth="2"/>
+                      <circle cx="12" cy="12" r="5" fill="none" stroke="currentColor" strokeWidth="2"/>
+                      <circle cx="17.5" cy="6.5" r="1.25" fill="currentColor"/>
+                    </svg>
+                  </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </div>
   );
 }
-
-export default Footer;

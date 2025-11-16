@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PerfumeBottle from '../assets/hero-perfume-bottle-placeholder.jpg';
 
 // Simple SVG Icons
 const HeartIcon = ({ className }: { className?: string }) => (
@@ -156,9 +157,10 @@ const ServicesPage = () => {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-rose-50 via-pink-50 to-amber-50">
+    // <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-amber-50">
+    <div className="min-h-screen ">
       {/* Hero Section */}
-      <div className="relative overflow-hidden text-white h-[40vh]" style={{background: 'linear-gradient(135deg, #e8c4bc 0%, #f5d5d5 50%, #fae8e8 100%)'}}>
+      {/* <div className="relative overflow-hidden text-white h-[40vh]" style={{backgroundImage: `url(${PerfumeBottle})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
         <div className="absolute inset-0 bg-black opacity-20"></div>
         <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32 h-full flex items-center justify-center">
           <div className={`text-center transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
@@ -174,14 +176,19 @@ const ServicesPage = () => {
             </p>
           </div>
         </div>
-      </div>
+      </div> */}
+      {/* <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
+        <div className="max-w-7xl mx-auto px-6 py-6">
+          <h1 className="text-4xl font-light text-gray-800 tracking-wide">
+            Our <span className="font-normal text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-amber-400">Services</span>
+          </h1>
+        </div>
+      </header> */}
 
       {/* Services Grid */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
+      <div className="max-w-7xl mx-auto px-6 py-8">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-            Our Services
-          </h2>
+
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
             Each experience is thoughtfully crafted to complement your occasion and create lasting memories
           </p>
@@ -195,16 +202,16 @@ const ServicesPage = () => {
               className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden"
             >
               <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient}`}></div>
-              
+
               <div className="p-8">
                 <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
                   {service.icon}
                 </div>
-                
+
                 <h3 className="text-2xl font-bold text-gray-900 mb-3">
                   {service.title}
                 </h3>
-                
+
                 <p className="text-gray-600 mb-6 leading-relaxed">
                   {service.description}
                 </p>
@@ -229,7 +236,7 @@ const ServicesPage = () => {
       </div>
 
       {/* Benefits Section */}
-      <div className="relative overflow-hidden text-white py-20" style={{background: 'linear-gradient(135deg, #b76e79 0%, #d4a5a5 50%, #e8c4bc 100%)'}}>
+      <div className="relative overflow-hidden text-white py-20" style={{ background: 'linear-gradient(135deg, #b76e79 0%, #d4a5a5 50%, #e8c4bc 100%)' }}>
         <div className="absolute inset-0 bg-black opacity-10"></div>
         <div className="relative max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
@@ -257,7 +264,7 @@ const ServicesPage = () => {
 
       {/* Experience Section */}
       <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="rounded-3xl p-12 md:p-16 text-center" style={{background: 'linear-gradient(135deg, #f9d5e5 0%, #fce4ec 50%, #fff0f5 100%)'}}>
+        <div className="rounded-3xl p-12 md:p-16 text-center" style={{ background: 'linear-gradient(135deg, #f9d5e5 0%, #fce4ec 50%, #fff0f5 100%)' }}>
           <SparklesIcon className="w-16 h-16 mx-auto mb-6 text-rose-600" />
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
             The Charm of Bespoke Fragrance
@@ -290,9 +297,9 @@ const ServicesPage = () => {
         <p className="text-xl text-gray-600 mb-8">
           Let's design a bespoke fragrance experience for your next celebration
         </p>
-        <button 
+        <button
           className="text-white px-12 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
-          style={{background: 'linear-gradient(135deg, #d4a5a5 0%, #e8c4bc 50%, #f9d5e5 100%)'}}
+          style={{ background: 'linear-gradient(135deg, #d4a5a5 0%, #e8c4bc 50%, #f9d5e5 100%)' }}
         >
           Book Your Experience
         </button>

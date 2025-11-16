@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import PerfumeBottle from '../../assets/hero-perfume-bottle-placeholder.jpg';
 
-const AboutUs = () => {
+export default function AboutUs() {
   const [scrollY, setScrollY] = useState(0);
 
   useEffect(() => {
@@ -15,13 +15,11 @@ const AboutUs = () => {
       <style>{`
         @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 
-        /* About Us Page Styles */
         .modern-about-container {
-          background: linear-gradient(180deg, #fef3e8 0%, #ffffff 50%, #faf5f0 100%);
-          min-height: 100vh;
+          // background: linear-gradient(180deg, #fef3e8 0%, #ffffff 50%, #faf5f0 100%);
+          min-h-screen;
         }
 
-        /* Hero Section */
         .modern-about-hero {
           position: relative;
           height: 100vh;
@@ -67,8 +65,8 @@ const AboutUs = () => {
         }
 
         .modern-about-hero-title {
-          font-size: clamp(3rem, 8vw, 6rem);
-          font-weight: 500;
+          font-size: clamp(3rem, 8vw, 5rem);
+          font-weight: 300;
           color: white;
           margin-bottom: 1.5rem;
           letter-spacing: 0.05em;
@@ -76,7 +74,7 @@ const AboutUs = () => {
         }
 
         .modern-about-hero-subtitle {
-          font-size: clamp(1.25rem, 2vw, 1.5rem);
+          font-size: 1.25rem;
           color: rgba(255, 255, 255, 0.9);
           font-weight: 300;
           letter-spacing: 0.05em;
@@ -108,7 +106,6 @@ const AboutUs = () => {
           color: white;
         }
 
-        /* Content Sections */
         .modern-about-content {
           max-width: 90rem;
           margin: 0 auto;
@@ -120,11 +117,11 @@ const AboutUs = () => {
           grid-template-columns: repeat(2, 1fr);
           gap: 4rem;
           align-items: center;
-          padding: 6rem 0;
+          padding: 4rem 0;
         }
 
         .modern-about-section:first-of-type {
-          padding-top: 6rem;
+          padding-top: 4rem;
         }
 
         .modern-about-section-text {
@@ -144,7 +141,7 @@ const AboutUs = () => {
         }
 
         .modern-about-section-title {
-          font-size: clamp(2.5rem, 5vw, 3.5rem);
+          font-size: 3rem;
           font-weight: 300;
           margin-bottom: 2rem;
           color: var(--header-color);
@@ -161,6 +158,7 @@ const AboutUs = () => {
           line-height: 1.75;
           color: var(--paragraph-color);
           margin: 0;
+          font-weight: 300;
         }
 
         .modern-about-image-wrapper {
@@ -193,14 +191,13 @@ const AboutUs = () => {
           object-fit: cover;
         }
 
-        /* Values Section */
         .modern-about-values {
           text-align: center;
-          padding: 6rem 0;
+          padding: 4rem 0;
         }
 
         .modern-about-values-title {
-          font-size: clamp(2.5rem, 5vw, 3.5rem);
+          font-size: 3rem;
           font-weight: 300;
           margin-bottom: 4rem;
           color: var(--header-color);
@@ -209,7 +206,7 @@ const AboutUs = () => {
         .modern-about-values-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 3rem;
+          gap: 2rem;
         }
 
         .modern-about-value-card {
@@ -261,7 +258,7 @@ const AboutUs = () => {
         }
 
         .modern-about-value-title {
-          font-size: 1.5rem;
+          font-size: 2rem;
           font-weight: 300;
           margin-bottom: 1rem;
           color: var(--header-color);
@@ -271,15 +268,15 @@ const AboutUs = () => {
           font-size: 1rem;
           line-height: 1.75;
           color: var(--paragraph-color);
+          font-weight: 300;
         }
 
-        /* Gallery Section */
         .modern-about-gallery {
-          padding: 6rem 0;
+          padding: 4rem 0;
         }
 
         .modern-about-gallery-title {
-          font-size: clamp(2.5rem, 5vw, 3.5rem);
+          font-size: 3rem;
           font-weight: 300;
           margin-bottom: 4rem;
           text-align: center;
@@ -326,44 +323,46 @@ const AboutUs = () => {
           opacity: 1;
         }
 
-        /* CTA Section */
         .modern-about-cta {
           text-align: center;
-          padding: 5rem 0;
+          padding: 4rem 0;
         }
 
         .modern-about-cta-title {
-          font-size: clamp(2rem, 4vw, 2.5rem);
+          font-size: 2rem;
           font-weight: 300;
           margin-bottom: 1.5rem;
           color: var(--header-color);
         }
 
         .modern-about-cta-description {
-          font-size: 1.25rem;
+          font-size: 1.125rem;
           color: var(--paragraph-color);
           margin: 0 auto 2.5rem;
           max-width: 48rem;
           line-height: 1.75;
+          font-weight: 300;
         }
 
         .modern-about-cta-button {
-          padding: 1rem 3rem;
+          padding: 1rem 2.5rem;
           background-color: var(--header-color);
           color: white;
           border-radius: 9999px;
           border: none;
           font-size: 1.125rem;
+          font-weight: 300;
           letter-spacing: 0.05em;
           cursor: pointer;
-          transition: background-color 0.3s ease;
+          transition: all 0.3s ease;
         }
 
         .modern-about-cta-button:hover {
           background-color: #2d2d2d;
+          transform: scale(1.05);
+          box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
         }
 
-        /* Responsive Design */
         @media (max-width: 768px) {
           .modern-about-section {
             grid-template-columns: 1fr;
@@ -414,33 +413,6 @@ const AboutUs = () => {
       `}</style>
 
       <div className="modern-about-container">
-        {/* Hero Section with Parallax Effect */}
-        <div className="modern-about-hero">
-          <div 
-            className="modern-about-hero-bg"
-            style={{ transform: `translateY(${scrollY * 0.5}px)` }}
-          >
-            <img 
-              src={PerfumeBottle} 
-              alt="Nspired Perfume" 
-            />
-            <div className="modern-about-hero-overlay" />
-          </div>
-          
-          <div className="modern-about-hero-content">
-            <div className="modern-about-hero-text">
-              <h1 className="modern-about-hero-title">NSPIRED</h1>
-              <p className="modern-about-hero-subtitle">Where Scent Meets Soul</p>
-            </div>
-          </div>
-
-          <div className="modern-about-scroll-indicator">
-            <svg className="modern-about-scroll-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div>
-        </div>
-
         {/* Story Section */}
         <div className="modern-about-content">
           <div className="modern-about-section">
@@ -591,6 +563,4 @@ const AboutUs = () => {
       </div>
     </>
   );
-};
-
-export default AboutUs;
+}

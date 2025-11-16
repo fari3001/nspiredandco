@@ -83,7 +83,7 @@ function App() {
         {/* <MainBody /> */}
     </main>
     {showComponent && (
-    <Footer companyName='Nspired & Co' />
+    <Footer />
     )}
     </>
   )
