@@ -1,4 +1,4 @@
-import React, { useState, type JSX } from 'react';
+import React, { useState, useEffect, type JSX } from 'react';
 import { Sparkles, Droplet, Home, Car, Heart, Users, Gift, type LucideIcon } from 'lucide-react';
 
 interface Benefit {
@@ -26,6 +26,11 @@ type ExperienceKey = keyof Experiences;
 
 export default function ExperiencesPage(): JSX.Element {
   const [activeTab, setActiveTab] = useState<ExperienceKey>('events');
+  const [isLoaded, setIsLoaded] = useState(false);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   const experiences: Experiences = {
     events: {
@@ -106,97 +111,126 @@ export default function ExperiencesPage(): JSX.Element {
   const IconComponent: LucideIcon = current.icon;
 
   return (
-    // <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-amber-50">
-    <div className="min-h-screen ">
-      {/* Header */}
-      {/* <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <h1 className="text-4xl font-light text-gray-800 tracking-wide">
-            Our <span className="font-normal text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-amber-400">Experiences</span>
-          </h1>
+    <div className="min-h-screen bg-gradient-to-b from-stone-100 via-stone-50 to-stone-100">
+      {/* Hero Section */}
+      <div className="relative overflow-hidden">
+        {/* Decorative blur elements */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-rose-100/20 rounded-full blur-3xl" />
+        <div className="absolute top-40 right-1/4 w-72 h-72 bg-amber-100/20 rounded-full blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto px-6 py-20">
+          <div className={`text-center mb-12 transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
+            <div className="inline-block mb-6">
+              <div className="h-px w-20 bg-gradient-to-r from-transparent via-rose-300 to-transparent mb-8" />
+            </div>
+            <h1 className="text-6xl md:text-7xl font-extralight text-gray-900 mb-8 tracking-tight">
+              Our Experiences
+            </h1>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed tracking-wide">
+              Discover bespoke fragrance journeys crafted to inspire and delight
+            </p>
+          </div>
         </div>
-      </header> */}
+      </div>
+
+      {/* Separator after hero */}
+      <div className="max-w-7xl mx-auto px-6 mb-16">
+        <div className="h-px w-42 bg-gradient-to-r from-transparent via-rose-300 to-transparent mx-auto" />
+      </div>
 
       {/* Navigation Tabs */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="flex gap-4 flex-wrap justify-center">
+      <div className="max-w-7xl mx-auto px-6 pb-16">
+        <div className="flex gap-3 flex-wrap justify-center">
           {(Object.entries(experiences) as [ExperienceKey, Experience][]).map(([key, exp]) => {
             const TabIcon: LucideIcon = exp.icon;
             return (
               <button
                 key={key}
                 onClick={() => setActiveTab(key)}
-                className={`flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300 ${
+                className={`flex items-center gap-3 px-10 py-4 transition-all duration-500 ${
                   activeTab === key
-                    ? 'bg-gradient-to-r from-rose-400 to-amber-400 text-white shadow-lg scale-105'
-                    : 'bg-white text-gray-600 hover:shadow-md hover:scale-102'
+                    ? 'bg-gradient-to-r from-gray-900 to-gray-800 text-white shadow-2xl'
+                    : 'bg-white/90 backdrop-blur-sm text-gray-700 hover:bg-white hover:shadow-lg border border-stone-300/50'
                 }`}
               >
-                <TabIcon size={20} />
-                <span className="font-light">{exp.title}</span>
+                <TabIcon size={20} strokeWidth={1.5} />
+                <span className="font-light tracking-wide">{exp.title}</span>
               </button>
             );
           })}
         </div>
       </div>
 
-      {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="text-center mb-16">
-          <div className="inline-block p-4 bg-gradient-to-br from-rose-100 to-amber-100 rounded-full mb-6">
-            <IconComponent size={48} className="text-rose-500" />
-          </div>
-          <h2 className="text-5xl font-light text-gray-800 mb-4">
-            {current.hero}
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
-            {current.description}
-          </p>
-        </div>
+      {/* Content Section */}
+      <div className="max-w-7xl mx-auto px-6 pb-20">
+        {/* Container with Experience Hero and Benefits */}
+        <div className="relative mb-24">
+          {/* Background gradient blur */}
+          <div className="absolute -inset-4 bg-gradient-to-br from-rose-100/40 via-white to-amber-100/40 rounded-2xl blur-xl" />
 
-        {/* Benefits Grid */}
-        <div className="grid md:grid-cols-3 gap-8 mb-16">
-          {current.benefits.map((benefit: Benefit, index: number) => {
-            const BenefitIcon: LucideIcon = benefit.icon;
-            return (
-              <div
-                key={index}
-                className="bg-white rounded-2xl p-8 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
-              >
-                <div className="w-14 h-14 bg-gradient-to-br from-rose-100 to-amber-100 rounded-full flex items-center justify-center mb-6">
-                  <BenefitIcon size={28} className="text-rose-500" />
-                </div>
-                <h3 className="text-2xl font-light text-gray-800 mb-3">
-                  {benefit.title}
-                </h3>
-                <p className="text-gray-600 leading-relaxed font-light">
-                  {benefit.description}
-                </p>
+          {/* Main container with border */}
+          <div className="relative bg-white/80 backdrop-blur-sm border border-stone-300/70 rounded-2xl p-12 md:p-16">
+            {/* Experience Hero */}
+            <div className="text-center mb-16">
+              <div className="inline-flex items-center justify-center w-24 h-24 bg-gradient-to-br from-rose-100 to-amber-100 border border-rose-300/40 mb-10 group-hover:border-rose-400/60 transition-all duration-500">
+                <IconComponent size={44} className="text-rose-500" strokeWidth={1.2} />
               </div>
-            );
-          })}
+              <h2 className="text-5xl md:text-6xl font-extralight text-gray-900 mb-8 tracking-tight leading-tight">
+                {current.hero}
+              </h2>
+              <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
+                {current.description}
+              </p>
+            </div>
+
+            {/* Separator */}
+            <div className="mb-16">
+              <div className="h-px w-20 bg-gradient-to-r from-transparent via-rose-300/70 to-transparent mx-auto" />
+            </div>
+
+            {/* Benefits Grid */}
+            <div className="grid md:grid-cols-3 gap-10">
+              {current.benefits.map((benefit: Benefit, index: number) => {
+                const BenefitIcon: LucideIcon = benefit.icon;
+                return (
+                  <div
+                    key={index}
+                    className="text-center group"
+                  >
+                    <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-rose-100 to-amber-100 border border-rose-300/40 mb-8 group-hover:border-rose-400/70 group-hover:from-rose-200/60 group-hover:to-amber-200/60 transition-all duration-500">
+                      <BenefitIcon size={28} className="text-rose-500 group-hover:text-rose-600 transition-colors duration-500" strokeWidth={1.2} />
+                    </div>
+                    <h3 className="text-2xl font-light text-gray-900 mb-4 tracking-wide">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-gray-600 leading-relaxed font-light px-4">
+                      {benefit.description}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
 
-        {/* Highlight Banner */}
-        <div className="bg-gradient-to-r from-rose-400 to-amber-400 rounded-2xl p-8 text-center shadow-lg">
-          <p className="text-white text-lg font-light">
+        {/* Separator before highlight */}
+        {/* <div className="mb-20">
+          <div className="h-px w-20 bg-gradient-to-r from-transparent via-rose-200/60 to-transparent mx-auto" />
+        </div> */}
+
+        {/* Highlight Section */}
+        <div className="relative overflow-hidden bg-gradient-to-br from-rose-100 to-amber-100 border border-stone-300/60 rounded-xl p-16 text-center mb-20">
+          <p className="relative text-gray-800 text-lg font-light leading-relaxed max-w-3xl mx-auto">
             {current.highlight}
           </p>
         </div>
 
         {/* CTA Section */}
-        <div className="text-center mt-16">
-          <button className="bg-white text-gray-800 px-10 py-4 rounded-full text-lg font-light hover:shadow-xl transition-all duration-300 hover:scale-105 border border-rose-200">
+        <div className="text-center">
+          <button className="bg-gradient-to-r from-gray-900 to-gray-800 text-white px-14 py-5 text-sm font-light tracking-widest uppercase hover:shadow-2xl hover:shadow-gray-900/20 hover:from-rose-400 hover:to-amber-400 transition-all duration-500">
             Book Your Experience
           </button>
         </div>
-      </div>
-
-      {/* Footer tagline */}
-      <div className="text-center py-12 px-6">
-        <p className="text-gray-500 font-light italic">
-          Where fragrance becomes an unforgettable experience
-        </p>
       </div>
     </div>
   );

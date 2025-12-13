@@ -20,7 +20,6 @@ body {
 footer {
   height: 30vh;
   padding: 2rem;
-  background: linear-gradient(135deg, #b48c6e 0%, #e6c8b2 50%, #f5e6dc 100%);
 }
 
 /* Generic Styles */
@@ -908,7 +907,6 @@ input[type="number"]:focus-visible {
 footer {
   min-height: 35vh;
   padding: 4rem 3rem 2rem;
-  background: linear-gradient(135deg, #b48c6e 0%, #e6c8b2 50%, #f5e6dc 100%);
   position: relative;
   overflow: hidden;
 }

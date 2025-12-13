@@ -157,77 +157,89 @@ const ServicesPage = () => {
   ];
 
   return (
-    // <div className="min-h-screen bg-gradient-to-br from-rose-50 via-white to-amber-50">
-    <div className="min-h-screen ">
+    <div className="min-h-screen bg-gradient-to-b from-stone-100 via-stone-50 to-stone-100">
       {/* Hero Section */}
-      {/* <div className="relative overflow-hidden text-white h-[40vh]" style={{backgroundImage: `url(${PerfumeBottle})`, backgroundSize: 'cover', backgroundPosition: 'center'}}>
-        <div className="absolute inset-0 bg-black opacity-20"></div>
-        <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-32 h-full flex items-center justify-center">
+      <div className="relative overflow-hidden">
+        {/* Decorative blur elements */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-rose-100/20 rounded-full blur-3xl" />
+        <div className="absolute top-40 right-1/4 w-72 h-72 bg-amber-100/20 rounded-full blur-3xl" />
+
+        <div className="relative max-w-7xl mx-auto px-6 py-20">
           <div className={`text-center transition-all duration-1000 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}>
-            <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full mb-6">
-              <SparklesIcon className="w-4 h-4" />
-              <span className="text-sm font-medium">Mobile Perfume Bar</span>
+            <div className="inline-block mb-8">
+              <div className="h-px w-20 bg-gradient-to-r from-transparent via-rose-300 to-transparent mb-8" />
+              <div className="inline-flex items-center gap-2 bg-white/60 backdrop-blur-sm px-5 py-2 rounded-full border border-rose-200/30">
+                <SparklesIcon className="w-4 h-4 text-rose-400" />
+                <span className="text-sm font-light tracking-widest uppercase text-gray-700">Mobile Perfume Bar</span>
+              </div>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 tracking-tight">
-              Extraordinary Experiences,<br />One Scent at a Time
+
+            <h1 className="text-6xl md:text-7xl font-extralight text-gray-900 mb-8 tracking-tight leading-tight">
+              Extraordinary Experiences,
+              <br />
+              <span className="font-light">One Scent at a Time</span>
             </h1>
-            <p className="text-xl md:text-2xl text-rose-100 max-w-3xl mx-auto leading-relaxed">
+
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed tracking-wide mb-16">
               Transform your celebration into an unforgettable sensory journey with our luxurious mobile perfume bar
             </p>
           </div>
         </div>
-      </div> */}
-      {/* <header className="bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-6">
-          <h1 className="text-4xl font-light text-gray-800 tracking-wide">
-            Our <span className="font-normal text-transparent bg-clip-text bg-gradient-to-r from-rose-400 to-amber-400">Services</span>
-          </h1>
-        </div>
-      </header> */}
+      </div>
 
       {/* Services Grid */}
-      <div className="max-w-7xl mx-auto px-6 py-8">
-        <div className="text-center mb-16">
-
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+      <div className="max-w-7xl mx-auto px-6 py-12">
+        <div className="text-center mb-20">
+          <h2 className="text-5xl font-extralight text-gray-900 mb-6 tracking-tight">
+            Our Services
+          </h2>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto font-light leading-relaxed">
             Each experience is thoughtfully crafted to complement your occasion and create lasting memories
           </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-8 mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
           {services.map((service, index) => (
             <div
               key={index}
               onClick={() => setSelectedService(selectedService === index ? null : index)}
-              className="group relative bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer overflow-hidden"
+              className="group relative bg-white/60 backdrop-blur-sm border border-stone-200/50 hover:border-rose-200/50 transition-all duration-500 cursor-pointer overflow-hidden"
             >
-              <div className={`absolute top-0 left-0 right-0 h-1 bg-gradient-to-r ${service.gradient}`}></div>
+              {/* Decorative gradient line */}
+              <div className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r ${service.gradient} opacity-50 group-hover:opacity-100 transition-opacity duration-500`}></div>
 
-              <div className="p-8">
-                <div className={`inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br ${service.gradient} text-white mb-6 group-hover:scale-110 transition-transform duration-300`}>
-                  {service.icon}
+              <div className="p-10">
+                {/* Icon */}
+                <div className="mb-8">
+                  <div className={`inline-flex items-center justify-center w-14 h-14 rounded-full bg-gradient-to-br ${service.gradient} bg-opacity-10 text-gray-800 group-hover:scale-110 transition-transform duration-500`}>
+                    {service.icon}
+                  </div>
                 </div>
 
-                <h3 className="text-2xl font-bold text-gray-900 mb-3">
+                {/* Title */}
+                <h3 className="text-3xl font-extralight text-gray-900 mb-4 tracking-wide">
                   {service.title}
                 </h3>
 
-                <p className="text-gray-600 mb-6 leading-relaxed">
+                {/* Description */}
+                <p className="text-gray-600 font-light leading-relaxed mb-6">
                   {service.description}
                 </p>
 
-                <div className={`space-y-3 transition-all duration-300 ${selectedService === index ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
+                {/* Features - Expandable */}
+                <div className={`space-y-3 transition-all duration-500 ${selectedService === index ? 'max-h-96 opacity-100 mb-6' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                   {service.features.map((feature, fIndex) => (
                     <div key={fIndex} className="flex items-start gap-3">
-                      <CheckIcon className="w-5 h-5 text-rose-500 flex-shrink-0 mt-0.5" />
-                      <span className="text-gray-700 text-sm">{feature}</span>
+                      <CheckIcon className="w-4 h-4 text-rose-400 flex-shrink-0 mt-1" />
+                      <span className="text-gray-700 font-light text-sm leading-relaxed">{feature}</span>
                     </div>
                   ))}
                 </div>
 
-                <button className="mt-6 text-rose-600 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all">
-                  {selectedService === index ? 'Show less' : 'Learn more'}
-                  <span className="text-xl">{selectedService === index ? '↑' : '→'}</span>
+                {/* Expand Button */}
+                <button className="text-gray-700 font-light text-sm flex items-center gap-2 group-hover:gap-3 transition-all duration-300 uppercase tracking-wider">
+                  {selectedService === index ? 'Show less' : 'View details'}
+                  <span className="text-sm">{selectedService === index ? '↑' : '→'}</span>
                 </button>
               </div>
             </div>
@@ -236,26 +248,29 @@ const ServicesPage = () => {
       </div>
 
       {/* Benefits Section */}
-      <div className="relative overflow-hidden text-white py-20" style={{ background: 'linear-gradient(135deg, #b76e79 0%, #d4a5a5 50%, #e8c4bc 100%)' }}>
-        <div className="absolute inset-0 bg-black opacity-10"></div>
+      <div className="relative overflow-hidden py-24 bg-gradient-to-br from-stone-100 via-rose-50/30 to-amber-50/30">
+        <div className="absolute top-0 right-0 w-96 h-96 bg-rose-200/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 left-0 w-72 h-72 bg-amber-200/20 rounded-full blur-3xl"></div>
+
         <div className="relative max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <div className="text-center mb-20">
+            <div className="h-px w-16 bg-gradient-to-r from-transparent via-rose-300 to-transparent mb-8 mx-auto" />
+            <h2 className="text-5xl md:text-6xl font-extralight text-gray-900 mb-6 tracking-tight">
               Why Choose Our Mobile Perfume Bar
             </h2>
-            <p className="text-xl text-rose-100 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed">
               More than just entertainment, we create moments of connection and creativity
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8">
+          <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {benefits.map((benefit, index) => (
               <div
                 key={index}
-                className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/15 transition-all duration-300"
+                className="bg-white/70 backdrop-blur-sm border border-stone-200/50 p-10 hover:bg-white/80 hover:border-rose-200/50 transition-all duration-500"
               >
-                <h3 className="text-2xl font-bold mb-4">{benefit.title}</h3>
-                <p className="text-rose-100 leading-relaxed">{benefit.description}</p>
+                <h3 className="text-2xl font-light text-gray-900 mb-4 tracking-wide">{benefit.title}</h3>
+                <p className="text-gray-600 font-light leading-relaxed">{benefit.description}</p>
               </div>
             ))}
           </div>
@@ -263,46 +278,56 @@ const ServicesPage = () => {
       </div>
 
       {/* Experience Section */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="rounded-3xl p-12 md:p-16 text-center" style={{ background: 'linear-gradient(135deg, #f9d5e5 0%, #fce4ec 50%, #fff0f5 100%)' }}>
-          <SparklesIcon className="w-16 h-16 mx-auto mb-6 text-rose-600" />
-          <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-            The Charm of Bespoke Fragrance
-          </h2>
-          <p className="text-xl text-gray-700 max-w-3xl mx-auto leading-relaxed mb-8">
-            There's something truly magical about creating your own signature scent. Our mobile perfume bar brings the ancient art of perfumery to your celebration, offering guests an intimate, hands-on experience where they become the perfumer. Watch as your guests discover unexpected scent combinations, share moments of delight, and craft fragrances as unique as they are. It's not just an activity—it's a journey of self-expression, creativity, and sensory discovery that turns every guest into an artist.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4 text-sm font-semibold text-gray-700">
-            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full">
-              <CheckIcon className="w-4 h-4 text-rose-500" />
-              Interactive & Engaging
-            </div>
-            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full">
-              <CheckIcon className="w-4 h-4 text-rose-500" />
-              Suitable for All Ages
-            </div>
-            <div className="flex items-center gap-2 bg-white px-4 py-2 rounded-full">
-              <CheckIcon className="w-4 h-4 text-rose-500" />
-              Memorable & Unique
+      <div className="max-w-7xl mx-auto px-6 py-24">
+        <div className="relative overflow-hidden bg-gradient-to-br from-rose-50/50 via-white to-amber-50/50 border border-stone-200/50 p-16 md:p-20 text-center">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-rose-100/30 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 w-64 h-64 bg-amber-100/30 rounded-full blur-3xl"></div>
+
+          <div className="relative">
+            <SparklesIcon className="w-12 h-12 mx-auto mb-8 text-rose-400 stroke-1" />
+            <h2 className="text-5xl md:text-6xl font-extralight text-gray-900 mb-8 tracking-tight leading-tight">
+              The Charm of Bespoke Fragrance
+            </h2>
+            <p className="text-lg text-gray-600 max-w-4xl mx-auto font-light leading-relaxed mb-12">
+              There's something truly magical about creating your own signature scent. Our mobile perfume bar brings the ancient art of perfumery to your celebration, offering guests an intimate, hands-on experience where they become the perfumer. Watch as your guests discover unexpected scent combinations, share moments of delight, and craft fragrances as unique as they are. It's not just an activity—it's a journey of self-expression, creativity, and sensory discovery that turns every guest into an artist.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4 text-sm font-light text-gray-700">
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-stone-200/50 px-5 py-3 rounded-full">
+                <CheckIcon className="w-4 h-4 text-rose-400" />
+                <span className="tracking-wide">Interactive & Engaging</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-stone-200/50 px-5 py-3 rounded-full">
+                <CheckIcon className="w-4 h-4 text-rose-400" />
+                <span className="tracking-wide">Suitable for All Ages</span>
+              </div>
+              <div className="flex items-center gap-2 bg-white/80 backdrop-blur-sm border border-stone-200/50 px-5 py-3 rounded-full">
+                <CheckIcon className="w-4 h-4 text-rose-400" />
+                <span className="tracking-wide">Memorable & Unique</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
       {/* CTA Section */}
-      <div className="max-w-4xl mx-auto px-6 py-20 text-center">
-        <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-          Ready to Create Magic?
-        </h2>
-        <p className="text-xl text-gray-600 mb-8">
-          Let's design a bespoke fragrance experience for your next celebration
-        </p>
-        <button
-          className="text-white px-12 py-4 rounded-full text-lg font-semibold hover:shadow-2xl hover:scale-105 transition-all duration-300"
-          style={{ background: 'linear-gradient(135deg, #d4a5a5 0%, #e8c4bc 50%, #f9d5e5 100%)' }}
-        >
-          Book Your Experience
-        </button>
+      <div className="relative overflow-hidden py-32">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-rose-100/20 rounded-full blur-3xl"></div>
+
+        <div className="relative max-w-4xl mx-auto px-6 text-center">
+          <div className="h-px w-16 bg-gradient-to-r from-transparent via-rose-300 to-transparent mb-12 mx-auto" />
+
+          <h2 className="text-5xl md:text-6xl font-extralight text-gray-900 mb-8 tracking-tight">
+            Ready to Create Magic?
+          </h2>
+          <p className="text-xl text-gray-600 mb-12 font-light leading-relaxed max-w-2xl mx-auto">
+            Let's design a bespoke fragrance experience for your next celebration
+          </p>
+          <button
+            className="bg-gradient-to-r from-gray-900 to-gray-800 text-white px-12 py-4 text-sm font-light tracking-widest uppercase hover:shadow-2xl hover:shadow-gray-900/20 hover:from-rose-400 hover:to-amber-400 transition-all duration-500"
+          >
+            Book Your Experience
+          </button>
+        </div>
       </div>
     </div>
   );
