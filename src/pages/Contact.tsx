@@ -1,5 +1,8 @@
 import { useState, useEffect } from 'react';
-import { Mail, Phone, MessageCircle, Send } from 'lucide-react';
+import { Mail, Phone, MessageCircle, Send, CheckCircle, AlertCircle } from 'lucide-react';
+
+// Formspree form ID
+const FORMSPREE_FORM_ID = 'xpwlklzd'; // Your Formspree form ID
 
 export default function Contact() {
     const [formData, setFormData] = useState({
@@ -11,6 +14,8 @@ export default function Contact() {
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
+    const [errorMessage, setErrorMessage] = useState('');
 
     useEffect(() => {
         setIsLoaded(true);
@@ -24,28 +29,71 @@ export default function Contact() {
             ...prev,
             [name]: value,
         }));
+        // Reset status when user starts typing again
+        if (submitStatus !== 'idle') {
+            setSubmitStatus('idle');
+        }
     };
 
-    const handleSubmit = () => {
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+
+        // Validation
         if (!formData.name || !formData.email || !formData.message) {
-            alert('Please fill in all required fields');
+            setSubmitStatus('error');
+            setErrorMessage('Please fill in all required fields');
+            return;
+        }
+
+        // Email validation
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(formData.email)) {
+            setSubmitStatus('error');
+            setErrorMessage('Please enter a valid email address');
             return;
         }
 
         setIsSubmitting(true);
+        setSubmitStatus('idle');
 
-        setTimeout(() => {
-            console.log('Form submitted:', formData);
-            alert("Thank you for contacting us! We'll get back to you soon.");
-
-            setIsSubmitting(false);
-            setFormData({
-                name: '',
-                email: '',
-                phone: '',
-                message: '',
+        try {
+            const response = await fetch(`https://formspree.io/f/${FORMSPREE_FORM_ID}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    name: formData.name,
+                    email: formData.email,
+                    phone: formData.phone,
+                    message: formData.message,
+                    _subject: `New Contact Form Submission from ${formData.name}`,
+                }),
             });
-        }, 1500);
+
+            if (response.ok) {
+                setSubmitStatus('success');
+                setFormData({
+                    name: '',
+                    email: '',
+                    phone: '',
+                    message: '',
+                });
+
+                // Auto-hide success message after 5 seconds
+                setTimeout(() => {
+                    setSubmitStatus('idle');
+                }, 5000);
+            } else {
+                throw new Error('Form submission failed');
+            }
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            setSubmitStatus('error');
+            setErrorMessage('Something went wrong. Please try again or email us directly.');
+        } finally {
+            setIsSubmitting(false);
+        }
     };
 
     return (
@@ -86,7 +134,7 @@ export default function Contact() {
                         </p>
                     </div>
 
-                    <div className="space-y-5">
+                    <form onSubmit={handleSubmit} className="space-y-5">
                         <div>
                             <input
                                 type="text"
@@ -94,6 +142,7 @@ export default function Contact() {
                                 name="name"
                                 value={formData.name}
                                 onChange={handleChange}
+                                required
                                 className="w-full px-6 py-4 bg-white border border-stone-300 focus:border-rose-300 focus:outline-none focus:ring-0 transition-all duration-300 font-light text-gray-900 placeholder:text-gray-400"
                                 placeholder="Your Name *"
                             />
@@ -106,6 +155,7 @@ export default function Contact() {
                                 name="email"
                                 value={formData.email}
                                 onChange={handleChange}
+                                required
                                 className="w-full px-6 py-4 bg-white border border-stone-300 focus:border-rose-300 focus:outline-none focus:ring-0 transition-all duration-300 font-light text-gray-900 placeholder:text-gray-400"
                                 placeholder="Your Email *"
                             />
@@ -129,20 +179,45 @@ export default function Contact() {
                                 name="message"
                                 value={formData.message}
                                 onChange={handleChange}
+                                required
                                 rows={6}
                                 className="w-full px-6 py-4 bg-white border border-stone-300 focus:border-rose-300 focus:outline-none focus:ring-0 transition-all duration-300 font-light resize-none text-gray-900 placeholder:text-gray-400"
                                 placeholder="How can we help you? *"
                             />
                         </div>
 
+                        {/* Status Messages */}
+                        {submitStatus === 'success' && (
+                            <div className="bg-green-50 border border-green-200 rounded-lg p-4 flex items-start gap-3">
+                                <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+                                <div>
+                                    <p className="text-green-800 font-medium">Message sent successfully!</p>
+                                    <p className="text-green-700 text-sm mt-1">We'll get back to you as soon as possible.</p>
+                                </div>
+                            </div>
+                        )}
+
+                        {submitStatus === 'error' && (
+                            <div className="bg-red-50 border border-red-200 rounded-lg p-4 flex items-start gap-3">
+                                <AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+                                <div>
+                                    <p className="text-red-800 font-medium">Oops! Something went wrong.</p>
+                                    <p className="text-red-700 text-sm mt-1">{errorMessage}</p>
+                                </div>
+                            </div>
+                        )}
+
                         <div className="text-center pt-6">
                             <button
-                                onClick={handleSubmit}
+                                type="submit"
                                 disabled={isSubmitting}
                                 className="bg-gradient-to-r from-gray-900 to-gray-800 text-white px-12 py-4 text-sm font-light tracking-widest uppercase hover:shadow-2xl hover:shadow-gray-900/20 hover:from-rose-400 hover:to-amber-400 transition-all duration-500 disabled:opacity-50 disabled:cursor-not-allowed flex items-center gap-3 mx-auto"
                             >
                                 {isSubmitting ? (
-                                    'Sending...'
+                                    <>
+                                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                        Sending...
+                                    </>
                                 ) : (
                                     <>
                                         Send Message
@@ -151,7 +226,7 @@ export default function Contact() {
                                 )}
                             </button>
                         </div>
-                    </div>
+                    </form>
                 </div>
 
                 {/* Highlight Banner */}

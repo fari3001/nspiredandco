@@ -1,12 +1,34 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { products } from '../data/products';
 
-export default function Shop() {
+interface ShopProps {
+  searchQuery?: string;
+}
+
+export default function Shop({ searchQuery = '' }: ShopProps) {
+  const navigate = useNavigate();
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
     setIsLoaded(true);
   }, []);
+
+  // Filter products based on search query
+  const filteredProducts = useMemo(() => {
+    if (!searchQuery.trim()) {
+      return products;
+    }
+
+    const query = searchQuery.toLowerCase();
+    return products.filter(
+      (product) =>
+        product.name.toLowerCase().includes(query) ||
+        product.description.toLowerCase().includes(query) ||
+        product.scent.toLowerCase().includes(query) ||
+        product.type.toLowerCase().includes(query)
+    );
+  }, [searchQuery]);
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-stone-100 via-stone-50 to-stone-100">
@@ -29,15 +51,34 @@ export default function Shop() {
               <br />
               each crafted to inspire and captivate.
             </p>
+            {searchQuery && (
+              <p className="text-lg text-gray-500 mt-6 font-light">
+                Showing results for "<span className="text-rose-500">{searchQuery}</span>"
+              </p>
+            )}
           </div>
 
+          {/* No Results Message */}
+          {filteredProducts.length === 0 && (
+            <div className="text-center py-20">
+              <p className="text-2xl text-gray-500 font-light mb-4">
+                No products found matching "{searchQuery}"
+              </p>
+              <p className="text-gray-400 font-light">
+                Try adjusting your search terms
+              </p>
+            </div>
+          )}
+
           {/* Products Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 mb-20">
-            {products.map((product, index) => (
+          {filteredProducts.length > 0 && (
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-16 mb-20">
+              {filteredProducts.map((product, index) => (
               <div
                 key={product.id}
                 className="group cursor-pointer"
                 style={{ animationDelay: `${index * 100}ms` }}
+                onClick={() => navigate(`/product/${product.id}`)}
               >
                 {/* Product Card */}
                 <div className="relative">
@@ -91,6 +132,7 @@ export default function Shop() {
               </div>
             ))}
           </div>
+          )}
         </div>
       </div>
     </div>

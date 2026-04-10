@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import PerfumeBottle from '../assets/hero-perfume-bottle-placeholder.jpg';
+import { useNavigate } from 'react-router-dom';
+import { Calendar } from 'lucide-react';
 
 // Simple SVG Icons
 const HeartIcon = ({ className }: { className?: string }) => (
@@ -55,6 +56,7 @@ const CheckIcon = ({ className }: { className?: string }) => (
 );
 
 const ServicesPage = () => {
+  const navigate = useNavigate();
   const [selectedService, setSelectedService] = useState<number | null>(null);
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -310,23 +312,38 @@ const ServicesPage = () => {
       </div>
 
       {/* CTA Section */}
-      <div className="relative overflow-hidden py-32">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-rose-100/20 rounded-full blur-3xl"></div>
+      <div className="relative overflow-hidden py-24 bg-gradient-to-br from-stone-100 via-rose-50/20 to-amber-50/20">
+        <div className="absolute top-0 left-0 w-96 h-96 bg-rose-100/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-amber-100/20 rounded-full blur-3xl"></div>
 
-        <div className="relative max-w-4xl mx-auto px-6 text-center">
-          <div className="h-px w-16 bg-gradient-to-r from-transparent via-rose-300 to-transparent mb-12 mx-auto" />
+        <div className="relative max-w-7xl mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center">
+            <div className="bg-white/60 backdrop-blur-sm border border-stone-300 p-16 md:p-20">
+              <div className="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-rose-50 to-amber-50 border border-rose-200/30 mb-8">
+                <Calendar size={32} className="text-rose-400" strokeWidth={1.2} />
+              </div>
 
-          <h2 className="text-5xl md:text-6xl font-extralight text-gray-900 mb-8 tracking-tight">
-            Ready to Create Magic?
-          </h2>
-          <p className="text-xl text-gray-600 mb-12 font-light leading-relaxed max-w-2xl mx-auto">
-            Let's design a bespoke fragrance experience for your next celebration
-          </p>
-          <button
-            className="bg-gradient-to-r from-gray-900 to-gray-800 text-white px-12 py-4 text-sm font-light tracking-widest uppercase hover:shadow-2xl hover:shadow-gray-900/20 hover:from-rose-400 hover:to-amber-400 transition-all duration-500"
-          >
-            Book Your Experience
-          </button>
+              <h2 className="text-5xl md:text-6xl font-extralight text-gray-900 mb-6 tracking-tight">
+                Ready to Book?
+              </h2>
+
+              <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light leading-relaxed mb-12">
+                Let's create an unforgettable fragrance experience for your event. Book our mobile perfume bar and make your celebration truly memorable.
+              </p>
+
+              <button
+                onClick={() => navigate('/bookings')}
+                className="bg-gradient-to-r from-gray-900 to-gray-800 text-white px-12 py-5 text-sm font-light tracking-widest uppercase hover:shadow-2xl hover:shadow-gray-900/20 hover:from-rose-400 hover:to-amber-400 transition-all duration-500 inline-flex items-center gap-3"
+              >
+                <Calendar size={18} strokeWidth={1.5} />
+                Book Your Experience
+              </button>
+
+              <p className="text-sm text-gray-500 font-light mt-8">
+                We'll respond within 24 hours to confirm your date
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </div>

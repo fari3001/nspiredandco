@@ -1,4 +1,5 @@
 import React, { useState, useEffect, type JSX } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Sparkles, Droplet, Home, Car, Heart, Users, Gift, type LucideIcon } from 'lucide-react';
 
 interface Benefit {
@@ -25,6 +26,7 @@ interface Experiences {
 type ExperienceKey = keyof Experiences;
 
 export default function ExperiencesPage(): JSX.Element {
+  const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<ExperienceKey>('events');
   const [isLoaded, setIsLoaded] = useState(false);
 
@@ -227,7 +229,10 @@ export default function ExperiencesPage(): JSX.Element {
 
         {/* CTA Section */}
         <div className="text-center">
-          <button className="bg-gradient-to-r from-gray-900 to-gray-800 text-white px-14 py-5 text-sm font-light tracking-widest uppercase hover:shadow-2xl hover:shadow-gray-900/20 hover:from-rose-400 hover:to-amber-400 transition-all duration-500">
+          <button
+            onClick={() => navigate('/bookings')}
+            className="bg-gradient-to-r from-gray-900 to-gray-800 text-white px-14 py-5 text-sm font-light tracking-widest uppercase hover:shadow-2xl hover:shadow-gray-900/20 hover:from-rose-400 hover:to-amber-400 transition-all duration-500"
+          >
             Book Your Experience
           </button>
         </div>
