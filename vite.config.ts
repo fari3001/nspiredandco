@@ -15,6 +15,8 @@ export default defineConfig({
     },
   },
   server: {
+    open: '/index.html',
+    browser: 'chrome',
     fs: {
       strict: false,
     },

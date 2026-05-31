@@ -249,7 +249,7 @@ const Home = () => {
               maxWidth: '460px',
             }}
           >
-            Beautifully crafted perfumes, home diffusers, and bespoke fragrance bar experiences for weddings and extraordinary events.
+            Beautifully crafted perfumes, home diffusers, and bespoke fragrance bar experiences for weddings and extraordinary event.
           </p>
 
           {/* CTA row */}
